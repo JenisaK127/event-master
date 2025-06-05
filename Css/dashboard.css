@@ -1,0 +1,73 @@
+/* Algemene stijlen */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #A7D7E7;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+nav {
+    display: flex;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #e4a5ea;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 100px;
+}
+
+
+.left {
+    flex: 2;
+    margin-right: 10px;
+}
+
+.right {
+    flex: 1;
+
+}
+
+.sections-toeslag, .gebruiker-gegevens {
+    background: linear-gradient(to bottom, #e5c8eb, #C4E0F9);
+    padding: 20px;
+    width: 500px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Zorgt ervoor dat de gebruiker ziet dat het klikbaar is */
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Hover-effect */
+.sections-toeslag:hover, .gebruiker-gegevens:hover {
+    transform: scale(1.05); /* Beetje groter maken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schaduw vergroten */
+    background-color: #eb98d3;
+}
+
+

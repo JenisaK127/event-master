@@ -1,0 +1,96 @@
+/* Algemene styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #e5c8eb, #C4E0F9);
+}
+
+/* input-dashboard styling */
+.input-dashboard {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Knoppen styling */
+.input-dashboard a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+
+}
+
+/* input styling */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+a {
+    background-color: #e17bdc;
+    text-decoration: none;
+    color: #f6f7f8;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+a:hover {
+    background-color: #e17bdc;
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #99e4ea;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #df88d7;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
