@@ -104,7 +104,8 @@ try {
                         <td><?= htmlspecialchars($gast['email']); ?></td>
                         <td><?= htmlspecialchars($gast['telefoonnummer']); ?></td>
                         <td>
-                            <a href="delete.php?gastenID=<?= htmlspecialchars($gast['gastenID']); ?>" class="btn btn-danger btn-sm">Verwijderen</a>
+                            <a href="updateGast.php?gastenID=<?= htmlspecialchars($gast['gastenID']); ?>" class="btn btn-warning btn-sm">Bewerken</a>
+                            <a href="delete.php?gastenID=<?= htmlspecialchars($gast['gastenID']); ?>&evenementID=<?= urlencode($evenementID) ?>" class="btn btn-danger btn-sm">Verwijderen</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

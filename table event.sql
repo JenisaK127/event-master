@@ -50,13 +50,10 @@ CREATE TABLE gastenlijst (
 );
 
 
-
 SELECT * FROM gebruiker;
 
 SELECT * FROM gastenlijst;
 
 select * from takenlijst;
 
--- select * from voor_dashboard;
--- SELECT * FROM voor_dashboard WHERE gebruikerID = voorID;
 update gastenlijst set evenementID = 4 where gastenID = 13;

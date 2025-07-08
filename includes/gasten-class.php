@@ -39,5 +39,25 @@ class Gastenlijst {
     public function verwijderGast(int $gastenID) {
         $this->pdo->run("DELETE FROM gastenlijst WHERE gastenID = :gastenID", [':gastenID' => $gastenID]);
     }
+
+    // Gast ophalen op ID
+    public function getGastById(int $gastenID) {
+        return $this->pdo->run("SELECT * FROM gastenlijst WHERE gastenID = :gastenID", [':gastenID' => $gastenID])->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Gast bijwerken
+    public function updateGast(int $gastenID, string $voornaam, string $achternaam, int $leeftijd, string $email, string $telefoonnummer) {
+        return $this->pdo->run(
+            "UPDATE gastenlijst SET voornaam = :voornaam, achternaam = :achternaam, leeftijd = :leeftijd, email = :email, telefoonnummer = :telefoonnummer WHERE gastenID = :gastenID",
+            [
+                ':voornaam' => $voornaam,
+                ':achternaam' => $achternaam,
+                ':leeftijd' => $leeftijd,
+                ':email' => $email,
+                ':telefoonnummer' => $telefoonnummer,
+                ':gastenID' => $gastenID
+            ]
+        );
+    }
 }
 ?>

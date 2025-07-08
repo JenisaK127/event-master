@@ -6,18 +6,23 @@ $takenlijst = new Takenlijst($db);
 $success = false;
 $errorMessage = "";
 
-$evenementID = isset($_GET['evenementID']) ? intval($_GET['evenementID']) : 1;
+$evenementID = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $idEvenement = $_GET['id'];
-    $taaknaam = trim($_POST["taaknaam"]);
-    $benodigdheden = trim($_POST["benodigdheden"]);
+    // Gebruik altijd het evenementID uit het formulier als die bestaat
+    $idEvenement = isset($_POST['evenementID']) ? intval($_POST['evenementID']) : $evenementID;
+    $taaknaam = isset($_POST["taaknaam"]) ? trim($_POST["taaknaam"]) : '';
+    $benodigdheden = isset($_POST["benodigdheden"]) ? trim($_POST["benodigdheden"]) : '';
     $status = isset($_POST["status"]) ? htmlspecialchars($_POST["status"]) : "Niet gestart";
 
-    if ($taaknaam && $benodigdheden) {
-        $success = $takenlijst->insertTaak($taaknaam, $_GET['id'], $benodigdheden, $status);
+    // Debug: check waarden
+    // echo "taaknaam: $taaknaam, benodigdheden: $benodigdheden, idEvenement: $idEvenement";
+
+    if (strlen($taaknaam) > 0 && strlen($benodigdheden) > 0 && $idEvenement > 0) {
+        $success = $takenlijst->insertTaak($taaknaam, $idEvenement, $benodigdheden, $status);
         if ($success) {
+            // Herlaad de pagina zonder POST zodat de nieuwe taak direct zichtbaar is
             header("Location: taken.php?id=$idEvenement");
             exit();
         } else {
@@ -28,9 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-
 try {
-    $taken = $takenlijst->getAlleTaken($_GET['id']);
+    $taken = $evenementID > 0 ? $takenlijst->getAlleTaken($evenementID) : [];
 } catch (Exception $e) {
     $errorMessage = "Fout bij het ophalen van de gegevens: " . $e->getMessage();
     $taken = [];
@@ -60,6 +64,7 @@ try {
 <a href="../user/dashboard.php?ID">Terug</a>
 
 <form method="post" class="mb-4">
+    <input type="hidden" name="evenementID" value="<?= htmlspecialchars($evenementID) ?>">
     <div class="mb-3">
         <label for="taak_naam" class="form-label">Taak naam:</label>
         <input type="text" id="taak_naam" name="taaknaam" class="form-control" placeholder="Taak naam" required>

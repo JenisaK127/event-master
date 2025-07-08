@@ -20,7 +20,12 @@ try {
     if (isset($_GET["gastenID"])) {
         $gastenID = intval($_GET['gastenID']);  
         $gastenlijst->verwijderGast($gastenID);  
-        header("Location: gasten.php");  
+        $evenementID = isset($_GET['evenementID']) ? intval($_GET['evenementID']) : 0;
+        if ($evenementID > 0) {
+            header("Location: gasten.php?id=$evenementID");
+        } else {
+            header("Location: gasten.php");
+        }
         exit();
     }
     
